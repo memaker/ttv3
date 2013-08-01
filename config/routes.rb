@@ -1,4 +1,7 @@
 Ttv2::Application.routes.draw do
+  resources :searches
+
+
   authenticated :user do
     root :to => 'home#index'
   end

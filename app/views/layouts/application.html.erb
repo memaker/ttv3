@@ -1,35 +1,79 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta charset="utf-8" />
     <title><%= content_for?(:title) ? yield(:title) : "Ttv2" %></title>
+    
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ttv2" %>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!--basic styles-->
+	
+	<%= stylesheet_link_tag "bootstrap.min" %>
+	<%= stylesheet_link_tag "bootstrap-responsive.min" %>
+	<%= stylesheet_link_tag "font-awesome.min" %>
+
+	<!--[if IE 7]>
+	  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+	<![endif]-->
+
+	<!--page specific plugin styles-->
+
+	<!--fonts-->
+
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+	<!--ace styles-->
+
+	<%= stylesheet_link_tag "ace.min" %>
+	<%= stylesheet_link_tag "ace-responsive.min" %>
+	<%= stylesheet_link_tag "ace-skins.min" %>
+
+	<!--[if lte IE 8]>
+	  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+	<![endif]-->
+	
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </div>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
-          </div>
-          <footer>
-          </footer>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+  
+  <body>
+  	<%= render 'layouts/navigation' %>
+  	
+  	<div class="container-fluid" id="main-container">
+  		<a id="menu-toggler" href="#">!
+  			<span></span>
+  		</a>
+  		
+  		<%= render 'layouts/sidebar' %>
+			
+		<div id="main-content" class="clearfix">
+			<div id="page-content" class="clearfix">
+				<div class="row-fluid">
+				<!--PAGE CONTENT BEGINS HERE-->
+				
+				<%= render 'layouts/messages' %>
+				<%= yield %>
+
+				<!--PAGE CONTENT ENDS HERE-->
+				</div><!--/row-->
+			</div><!--/#page-content-->
+					
+		</div><!--/#main-content-->
+	</div><!--/.fluid-container#main-container-->
+	
+	<!--basic scripts-->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<%= javascript_include_tag 'jquery-1.9.1.min' %>
+	<%= javascript_include_tag 'bootstrap.min' %>
+
+	<!--ace scripts-->
+		
+	<%= javascript_include_tag 'ace-elements.min' %>
+	<%= javascript_include_tag 'ace.min' %>
+
   </body>
 </html>
