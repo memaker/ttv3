@@ -2,9 +2,9 @@
 <html>
   <head>
   	<meta charset="utf-8" />
-    <title><%= content_for?(:title) ? yield(:title) : "Ttv2" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Ttv3" %></title>
     
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ttv2" %>">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ttv3" %>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!--basic styles-->
@@ -33,8 +33,6 @@
 	  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 	<![endif]-->
 	
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
